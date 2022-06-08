@@ -1,6 +1,6 @@
 import Movie from "../movie/Movie";
 import styles from "./Movies.module.css"
-import {nanoid} from "nanoid";
+
 
 function Movies(props){
     const {movies,setMovies, title} = props;
@@ -9,7 +9,7 @@ function Movies(props){
     //membuat function handleevent
     function handleClick(){
         const movie = {
-            id: nanoid(),
+            id: "xyz",
             title: "Memento",
             year:2021,
             type:"Movie",
@@ -27,11 +27,7 @@ function Movies(props){
             <section className={styles.movies}>
                 <h2 className={styles.movies__title}> {title} </h2>
                 <div className={styles.movie__container}>
-                {movies.map(function(movie){
-                    return <Movie key={movie.id} movie={movie} />
-                })
-                }
-                {}
+                {movies.map((movie, i) => <Movie movie={movie} />)}
                 </div>
                 <button onClick={handleClick} >Add Movie</button>
             </section>

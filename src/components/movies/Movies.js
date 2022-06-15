@@ -1,27 +1,16 @@
+import { useSelector } from "react-redux";
 import Movie from "../movie/Movie";
 import styles from "./Movies.module.css"
 
 
 function Movies(props){
-    const {movies,setMovies, title} = props;
+    const { title} = props;
+
+   const movies =  useSelector((store)=>store.movies.movies);
     
 
     //membuat function handleevent
-    function handleClick(){
-        const movie = {
-            id: "xyz",
-            title: "Memento",
-            year:2021,
-            type:"Movie",
-            poster:"https://picsum.photos/300/400"
-        }
-
-        //menjalankan fungsi setMovies
-        //tambahkan movie kedalam movies
-        //menggunakan spread operator : copy data array
-        setMovies([...movies, movie])
-    }
-
+    
     return(
         <div className={styles.container}>
             <section className={styles.movies}>
@@ -29,7 +18,6 @@ function Movies(props){
                 <div className={styles.movie__container}>
                 {movies.map((movie, i) => <Movie movie={movie} />)}
                 </div>
-                <button onClick={handleClick} >Add Movie</button>
             </section>
         </div>
     )

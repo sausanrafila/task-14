@@ -12,13 +12,14 @@ import TopRatedMovie from './pages/movie/TopRated';
 import theme from './utils/constants/themes';
 
 function App() {
+
   return (
     <>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
         <Layout>
         <Routes>
-          <Route path="/" element={<Home/>}/>
+          <Route path="/" element={<Home />}/>
           <Route path="/movie/create" element={<CreateMovie />} />
           <Route path="/movie/top" element={<TopRatedMovie />} />
           <Route path="/movie/now" element={<NowPlayingMovie />} />

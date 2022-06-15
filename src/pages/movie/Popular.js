@@ -24,7 +24,7 @@ function PopularMovie(){
     return(
         <div>
             <Hero  />
-            <Movies movies={movies} title='Popular Movies'/>
+            <Movies title='Popular Movies'/>
         </div>
     )
 }

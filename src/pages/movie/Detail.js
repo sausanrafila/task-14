@@ -1,13 +1,15 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import DetailMovie from "../../components/DetailMovie";
 import Movies from "../../components/movies/Movies";
+import { updateMovies } from "../../features/moviesSlice";
 
 function Detail(){
-    const [movies, setMovies] = useState([]);
     const params = useParams();
     const API_KEY = process.env.REACT_APP_API_KEY;
+    const dispatch = useDispatch();
 
     useEffect(()=>{
         getRecommendationMovies();
@@ -17,15 +19,14 @@ function Detail(){
         const URL = `https://api.themoviedb.org/3/movie/${params.id}/recommendations?api_key=${API_KEY}`;
         const response = await axios(URL);
 
-        setMovies(response.data.results);
+        dispatch(updateMovies(response.data.results));
     }
 
-    console.log(movies);
 
     return (
         <>
         <DetailMovie />;
-        <Movies movies={movies} />
+        <Movies title = "Recommendation Movies" />
     </>
     )
 }

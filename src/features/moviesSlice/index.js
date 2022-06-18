@@ -17,7 +17,12 @@ const moviesSlice =createSlice(
                 state.movies.push(action.payload)
             },
             deleteMovie() {},
-            updateMovies() {}
+            updateMovies() {},
+            //membuat reducer updateMovies untuk update movies
+            
+        },
+        updateMovies(state, action){
+            state.movies = action.payload;
         }
     }
 );
@@ -25,9 +30,9 @@ const moviesSlice =createSlice(
 
 //generate action dan reducers
 const moviesReducer = moviesSlice.reducer;
-const { addMovie, deleteMovie} = moviesSlice.actions;
+const { addMovie, deleteMovie, updateMovies} = moviesSlice.actions;
 
 //export action dan reducer
 
 export default moviesReducer;
-export {addMovie,deleteMovie};
+export {addMovie,deleteMovie, updateMovies};
